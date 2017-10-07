@@ -1,0 +1,84 @@
+bool sortbysec(const pair<int,int> &a,
+              const pair<int,int> &b)
+{
+    if(a.first==b.first)
+    return (a.second > b.second);
+    else
+        return a.first<=b.first;
+}
+ 
+
+
+int Solution::maximumGap(const vector<int> &A) {
+   vector<pair<int,int>>v;
+   for(int i = 0;i<A.size();i++){
+       v.push_back(make_pair(A[i],i));
+   }
+   
+    int k = A[0];
+    int t = 0,t1 = 0;
+   for(int i = 1;i<A.size();i++){
+       if(A[i]==k)
+         t++;
+         if(A[i-1]>A[i] && i<A.size())
+            t1++;
+   }
+   sort(v.begin(),v.end(),sortbysec);
+   int temp = -1;
+   int max = 0;
+   for(int  i = 0;i<v.size()-1;i++){
+       temp = (v[i+1].second-v[i].second);
+       if(temp>max)
+          max = temp ;
+   }
+   if(A.size()==1)
+     return 0;
+     else if(t==A.size()-1)
+        return t;
+        else if(t1 == A.size()-1)
+           return 0;
+        else
+            return temp;
+}
+bool sortbysec(const pair<int,int> &a,
+              const pair<int,int> &b)
+{
+    if(a.first==b.first)
+    return (a.second > b.second);
+    else
+        return a.first<=b.first;
+}
+ 
+
+
+int Solution::maximumGap(const vector<int> &A) {
+   vector<pair<int,int>>v;
+   for(int i = 0;i<A.size();i++){
+       v.push_back(make_pair(A[i],i));
+   }
+   
+    int k = A[0];
+    int t = 0,t1 = 0;
+   for(int i = 1;i<A.size();i++){
+       if(A[i]==k)
+         t++;
+         if(A[i-1]>A[i] && i<A.size())
+            t1++;
+   }
+   sort(v.begin(),v.end(),sortbysec);
+   int temp = -1;
+   int max = 0;
+   for(int  i = 0;i<v.size()-1;i++){
+       temp = (v[i+1].second-v[i].second);
+       if(temp>max)
+          max = temp ;
+   }
+   if(A.size()==1)
+     return 0;
+     else if(t==A.size()-1)
+        return t;
+        else if(t1 == A.size()-1)
+           return 0;
+        else
+            return temp;
+}
